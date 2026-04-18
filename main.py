@@ -27,11 +27,16 @@ def main() -> None:
             if len(data) < 3:
                 print("Input is in the wrong format!")
                 continue
-            
-
-
-
-
+            website, username , password = data
+            if len(password) < 12:
+                print("Password is too short!")
+                continue
+            add_login(filename, website, username, password)
+            print("Login added.")
+        elif option == "3":
+            break
+        else:
+            print("Invalid option selected!")
 
 if __name__ == "__main__":
     main()
