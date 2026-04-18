@@ -49,10 +49,11 @@ def change_password(filename: str, website: str, password: str) -> bool:
     for i in range(1, len(rows)):
         if rows[i][0] == website:
             rows[i][2] = caesar_encrypt(password)
-        found = True 
-        break 
+            found = True 
+            break 
     if not found:
         return False
+    
     with open(filename, "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerows(rows)
