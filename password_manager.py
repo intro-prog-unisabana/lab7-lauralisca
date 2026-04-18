@@ -42,7 +42,22 @@ def change_password(filename: str, website: str, password: str) -> bool:
     found = False 
     with open(filename, "r") as file:
         reader = csv.reader(file)
-        
+        for row in reader:
+            if row:
+                rows.append(row)
+    for i in range(1, len(rows)):
+        rows[i][2] = caesar_encrypt(rows[i][2])
+        found = True 
+        break 
+    if not found:
+        return False
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(rows)
+    return True 
+
+            
+
 
 
 
